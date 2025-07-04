@@ -89,7 +89,7 @@ start_services() {
     local max_retries=12
     
     while [ $retries -lt $max_retries ]; do
-        if curl -f http://localhost:3001/health &> /dev/null; then
+        if curl -f http://localhost:3002/health &> /dev/null; then
             print_success "Form.io server is ready"
             break
         fi
@@ -114,7 +114,7 @@ init_formio() {
     
     # Note: Form.io creates the project automatically based on environment variables
     # We'll verify it's accessible
-    if curl -f http://localhost:3001/project &> /dev/null; then
+    if curl -f http://localhost:3002/project &> /dev/null; then
         print_success "Form.io project initialized successfully"
     else
         print_warning "Form.io project may need manual setup. Check the admin interface."
@@ -139,8 +139,8 @@ setup_react_native() {
     # Create environment file
     print_status "Creating app environment configuration..."
     cat > .env << EOF
-EXPO_PUBLIC_FORMIO_URL=http://localhost:3001
-EXPO_PUBLIC_FORMIO_PROJECT_URL=http://localhost:3001/project
+EXPO_PUBLIC_FORMIO_URL=http://localhost:3002
+EXPO_PUBLIC_FORMIO_PROJECT_URL=http://localhost:3002/project
 EXPO_PUBLIC_APP_NAME=Aspect Health Forms
 EOF
     
@@ -183,7 +183,7 @@ validate_setup() {
     
     # Check Form.io API
     print_status "Testing Form.io API..."
-    if ! curl -f http://localhost:3001/health &> /dev/null; then
+    if ! curl -f http://localhost:3002/health &> /dev/null; then
         print_error "Form.io API is not responding"
         exit 1
     fi
@@ -205,9 +205,9 @@ print_final_instructions() {
     echo -e "${GREEN}Your Form.io POC is now ready!${NC}\n"
     
     echo -e "${BLUE}📋 Access URLs:${NC}"
-    echo -e "  • Form.io Admin: ${YELLOW}http://localhost:3001${NC}"
+    echo -e "  • Form.io Admin: ${YELLOW}http://localhost:3002${NC}"
     echo -e "  • Login: ${YELLOW}admin@example.com${NC} / ${YELLOW}password123${NC}"
-    echo -e "  • API Base: ${YELLOW}http://localhost:3001${NC}"
+    echo -e "  • API Base: ${YELLOW}http://localhost:3002${NC}"
     echo -e "  • MongoDB: ${YELLOW}mongodb://localhost:27017${NC}"
     
     echo -e "\n${BLUE}🚀 Next Steps:${NC}"

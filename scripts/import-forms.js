@@ -257,7 +257,7 @@ Environment Variables:
 
 Examples:
   node import-forms.js
-  FORMIO_URL=http://localhost:3001 node import-forms.js
+  FORMIO_URL=http://localhost:3002 node import-forms.js
 `);
     process.exit(0);
   }

@@ -28,7 +28,7 @@ export const FormRenderer: React.FC<FormRendererProps> = ({
   // Generate HTML for Form.io renderer
   const generateFormHTML = () => {
     const formioURL = formioClient.getFormURL(form._id);
-    const baseURL = process.env.EXPO_PUBLIC_FORMIO_URL || 'http://localhost:3001';
+    const baseURL = process.env.EXPO_PUBLIC_FORMIO_URL || 'http://localhost:3002';
     
     return `
 <!DOCTYPE html>

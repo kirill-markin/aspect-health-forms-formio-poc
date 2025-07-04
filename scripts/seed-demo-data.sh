@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-FORMIO_URL="http://localhost:3001"
+FORMIO_URL="http://localhost:3002"
 ADMIN_EMAIL="admin@example.com"
 ADMIN_PASS="password123"
 

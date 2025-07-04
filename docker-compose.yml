@@ -25,13 +25,13 @@ services:
       NODE_CONFIG: |
         {
           "mongo": "mongodb://mongodb:27017/formio",
-          "port": 3001,
+          "port": 3002,
           "jwt": {
             "secret": "your-super-secret-jwt-key-change-in-production"
           }
         }
     ports:
-      - "3002:3001"
+      - "3002:3002"
     networks:
       - formio-network
 

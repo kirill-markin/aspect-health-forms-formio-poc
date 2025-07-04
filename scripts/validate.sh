@@ -64,7 +64,7 @@ check_formio_api() {
     print_header "Form.io API Health Check"
     
     # Health endpoint
-    if curl -f http://localhost:3001/health &> /dev/null; then
+    if curl -f http://localhost:3002/health &> /dev/null; then
         print_success "Form.io health endpoint is responding"
     else
         print_error "Form.io health endpoint is not responding"
@@ -72,14 +72,14 @@ check_formio_api() {
     fi
     
     # Project endpoint
-    if curl -f http://localhost:3001/project &> /dev/null; then
+    if curl -f http://localhost:3002/project &> /dev/null; then
         print_success "Form.io project endpoint is accessible"
     else
         print_warning "Form.io project endpoint may need configuration"
     fi
     
     # Forms endpoint
-    if curl -f http://localhost:3001/form &> /dev/null; then
+    if curl -f http://localhost:3002/form &> /dev/null; then
         print_success "Form.io forms endpoint is accessible"
     else
         print_warning "Form.io forms endpoint may be empty (no forms created yet)"
@@ -167,7 +167,7 @@ check_configuration() {
 check_ports() {
     print_header "Port Availability"
     
-    local ports=("3001" "27017" "6379")
+    local ports=("3002" "27017" "6379")
     
     for port in "${ports[@]}"; do
         if lsof -i :$port &> /dev/null; then
@@ -184,7 +184,7 @@ check_performance() {
     
     # Check Form.io response time
     local start_time=$(date +%s%N)
-    if curl -f http://localhost:3001/health &> /dev/null; then
+    if curl -f http://localhost:3002/health &> /dev/null; then
         local end_time=$(date +%s%N)
         local duration=$(( (end_time - start_time) / 1000000 ))
         
@@ -208,7 +208,7 @@ print_summary() {
         echo -e "${BLUE}🎉 Your Form.io POC is ready to use!${NC}\n"
         
         echo -e "${BLUE}Quick Access:${NC}"
-        echo -e "  • Form.io Admin: ${YELLOW}http://localhost:3001${NC}"
+        echo -e "  • Form.io Admin: ${YELLOW}http://localhost:3002${NC}"
         echo -e "  • Login: ${YELLOW}admin@example.com${NC} / ${YELLOW}password123${NC}"
         echo -e "  • Start React Native: ${YELLOW}cd app && npm start${NC}"
         

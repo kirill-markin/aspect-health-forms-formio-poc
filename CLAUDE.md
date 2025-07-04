@@ -57,13 +57,13 @@ npm run type-check # TypeScript validation
 ### Form.io API Testing
 ```bash
 # Health check
-curl http://localhost:3001/health
+curl http://localhost:3002/health
 
 # List all forms
-curl http://localhost:3001/form
+curl http://localhost:3002/form
 
 # Create a test submission
-curl -X POST http://localhost:3001/form/{form-id}/submission \
+curl -X POST http://localhost:3002/form/{form-id}/submission \
   -H "Content-Type: application/json" \
   -d '{"data":{"name":"test","email":"test@example.com"}}'
 ```
@@ -104,10 +104,10 @@ This is a healthcare forms management POC using Form.io as a headless CMS with R
 **Multi-environment setup**:
 - Root `.env`: Docker/Form.io server configuration
 - `app/.env`: React Native app configuration with EXPO_PUBLIC_ prefixed variables
-- Default to localhost:3001 for Form.io server in development
+- Default to localhost:3002 for Form.io server in development
 
 ### Docker Service Dependencies
-- **formio-server** (port 3001): Main Form.io application and API
+- **formio-server** (port 3002): Main Form.io application and API
 - **mongodb** (port 27017): Primary data storage
 - **redis** (port 6379): Caching and session management
 - **formio-pdf** (port 4001): Optional PDF generation service

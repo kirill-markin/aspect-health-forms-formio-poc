@@ -23,7 +23,7 @@ Get your Form.io POC running in **3 minutes** with demo data!
 ## Immediate Access
 
 ### 🏥 Form.io Admin Interface
-**URL:** http://localhost:3001
+**URL:** http://localhost:3002
 **Login:** admin@example.com / password123
 
 **What to check:**
@@ -49,7 +49,7 @@ npm start
 ## 🧪 Complete Testing Flow (5 minutes)
 
 ### Step 1: Explore Form.io Admin (2 min)
-1. Open http://localhost:3001
+1. Open http://localhost:3002
 2. Login with admin@example.com / password123
 3. Go to **Forms** → View "Health Survey Demo"
 4. Notice the conditional logic rules (health concerns show based on rating)
@@ -71,12 +71,12 @@ npm start
 ## 📋 Demo Forms Included
 
 ### Health Survey Demo
-- **URL:** http://localhost:3001/health-survey-demo
+- **URL:** http://localhost:3002/health-survey-demo
 - **Features:** Personal info, health rating with conditional logic, symptoms checklist, NPS score
 - **Tests:** Conditional questions, form validation, mobile rendering
 
 ### Patient Intake Form
-- **URL:** http://localhost:3001/patient-intake
+- **URL:** http://localhost:3002/patient-intake
 - **Features:** Personal information panels, medical history, allergies
 - **Tests:** Multi-panel forms, medical data collection
 
@@ -107,7 +107,7 @@ docker-compose down -v && ./scripts/setup.sh
 ### Form.io Admin won't load
 ```bash
 # Check if Form.io is running
-curl http://localhost:3001/health
+curl http://localhost:3002/health
 # If not responding:
 docker-compose restart formio-server
 ```
@@ -122,7 +122,7 @@ docker-compose restart formio-server
 ```bash
 # Check app environment
 cat app/.env
-# Should show: EXPO_PUBLIC_FORMIO_URL=http://localhost:3001
+# Should show: EXPO_PUBLIC_FORMIO_URL=http://localhost:3002
 ```
 
 ### Mobile app shows empty form list
@@ -132,7 +132,7 @@ cat app/.env
 
 ## ✅ Success Checklist
 
-- [ ] Form.io admin loads at http://localhost:3001
+- [ ] Form.io admin loads at http://localhost:3002
 - [ ] Can login with admin@example.com / password123
 - [ ] Demo forms visible in Forms section
 - [ ] React Native app shows form list

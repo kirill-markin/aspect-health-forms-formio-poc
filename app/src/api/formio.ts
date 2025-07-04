@@ -8,8 +8,8 @@ class FormioClient {
   private token: string | null = null;
 
   constructor() {
-    this.baseURL = process.env.EXPO_PUBLIC_FORMIO_URL || 'http://localhost:3001';
-    this.projectURL = process.env.EXPO_PUBLIC_FORMIO_PROJECT_URL || 'http://localhost:3001/project';
+    this.baseURL = process.env.EXPO_PUBLIC_FORMIO_URL || 'http://localhost:3002';
+    this.projectURL = process.env.EXPO_PUBLIC_FORMIO_PROJECT_URL || 'http://localhost:3002/project';
     
     this.client = axios.create({
       baseURL: this.baseURL,

@@ -127,7 +127,7 @@ This will verify:
 ### 🧪 Testing the Complete Flow
 
 1. **Form.io Admin Test:**
-   - Navigate to http://localhost:3001
+   - Navigate to http://localhost:3002
    - Login and explore the form builder
    - Create a new form or modify existing ones
 
@@ -147,7 +147,7 @@ Use this checklist to verify your local setup is working correctly:
 
 ### Form.io Backend ✓
 - [ ] Docker containers running: `docker-compose ps`
-- [ ] Form.io admin accessible: http://localhost:3001
+- [ ] Form.io admin accessible: http://localhost:3002
 - [ ] Can login with admin@example.com / password123
 - [ ] Form builder interface loads correctly
 - [ ] Can create new forms using the GUI
@@ -169,8 +169,8 @@ Use this checklist to verify your local setup is working correctly:
 - [ ] Response saved in Form.io admin (check submissions)
 
 ### API Integration ✓
-- [ ] API health check works: `curl http://localhost:3001/health`
-- [ ] Forms endpoint accessible: `curl http://localhost:3001/form`
+- [ ] API health check works: `curl http://localhost:3002/health`
+- [ ] Forms endpoint accessible: `curl http://localhost:3002/form`
 - [ ] Mobile app can fetch form data (check browser console/logs)
 - [ ] Mobile app can submit responses (verify in Form.io admin)
 
@@ -448,7 +448,7 @@ cd app && npm start
 ```
 
 ### Form Development Workflow
-1. **Create/Edit Forms**: Use Form.io Admin UI at http://localhost:3001
+1. **Create/Edit Forms**: Use Form.io Admin UI at http://localhost:3002
 2. **Test in Mobile**: Forms appear automatically in React Native app
 3. **Debug**: Check browser console in WebView for JavaScript errors
 4. **Data Validation**: View submissions in Form.io Admin → Forms → Data
@@ -456,16 +456,16 @@ cd app && npm start
 ### API Development
 ```bash
 # Test Form.io API health
-curl http://localhost:3001/health
+curl http://localhost:3002/health
 
 # List all forms
-curl http://localhost:3001/form
+curl http://localhost:3002/form
 
 # Get specific form
-curl http://localhost:3001/form/{form-id}
+curl http://localhost:3002/form/{form-id}
 
 # Create test submission
-curl -X POST http://localhost:3001/form/{form-id}/submission \
+curl -X POST http://localhost:3002/form/{form-id}/submission \
   -H "Content-Type: application/json" \
   -d '{"data":{"name":"Test User","email":"test@example.com"}}'
 ```
@@ -495,7 +495,7 @@ npm run type-check # TypeScript
 - `ADMIN_EMAIL` / `ADMIN_PASS` - Admin credentials
 
 ### Docker Services
-- **Form.io Server**: Port 3001 (admin interface + API)
+- **Form.io Server**: Port 3002 (admin interface + API)
 - **MongoDB**: Port 27017 (database)
 - **Redis**: Port 6379 (caching)
 - **PDF Server**: Port 4001 (optional, for PDF generation)
@@ -543,10 +543,10 @@ docker-compose down -v
 docker-compose up -d
 ```
 
-**2. Port conflicts (3001 already in use)**
+**2. Port conflicts (3002 already in use)**
 ```bash
 # Check what's using the port
-lsof -i :3001
+lsof -i :3002
 
 # Kill the process or change port in docker-compose.yml
 ```
@@ -582,30 +582,30 @@ npm install
 ```bash
 # Check the app environment file
 cat app/.env
-# Should contain: EXPO_PUBLIC_FORMIO_URL=http://localhost:3001
+# Should contain: EXPO_PUBLIC_FORMIO_URL=http://localhost:3002
 
 # Test Form.io API manually
-curl http://localhost:3001/health
+curl http://localhost:3002/health
 
 # For iOS Simulator, use computer's IP instead of localhost:
-EXPO_PUBLIC_FORMIO_URL=http://192.168.1.XXX:3001
+EXPO_PUBLIC_FORMIO_URL=http://192.168.1.XXX:3002
 ```
 
 #### 🔍 Data Flow Issues
 
 **6. Form responses not saving**
 - Check browser console for API errors
-- Verify Form.io server is running: `curl http://localhost:3001/health`
+- Verify Form.io server is running: `curl http://localhost:3002/health`
 - Test API manually:
 ```bash
-curl -X POST http://localhost:3001/form/{form-id}/submission \
+curl -X POST http://localhost:3002/form/{form-id}/submission \
   -H "Content-Type: application/json" \
   -d '{"data":{"name":"test","email":"test@example.com"}}'
 ```
 
 **7. Forms not appearing in mobile app**
 - Check Form.io admin: ensure forms are created and not marked as system forms
-- Verify API endpoint: `curl http://localhost:3001/form`
+- Verify API endpoint: `curl http://localhost:3002/form`
 - Check React Native app logs for API errors
 
 ### 🚨 Emergency Reset
@@ -624,7 +624,7 @@ docker-compose down -v
 
 1. **Check container logs**: `docker-compose logs <service-name>`
 2. **Verify services running**: `docker-compose ps`
-3. **Test Form.io API**: `curl http://localhost:3001/health`
+3. **Test Form.io API**: `curl http://localhost:3002/health`
 4. **Check app logs**: Enable debugging in React Native/Expo
 5. **Inspect network requests**: Use browser dev tools to see API calls
 
@@ -715,7 +715,7 @@ This is a proof-of-concept project. Please refer to individual dependencies for 
 
 ## Quick Reference
 
-**Form.io Admin**: http://localhost:3001 (admin@example.com / password123)  
+**Form.io Admin**: http://localhost:3002 (admin@example.com / password123)  
 **React Native**: `cd app && npm start`  
 **Validation**: `./scripts/validate.sh`  
 **Logs**: `docker-compose logs -f`  

@@ -28,8 +28,8 @@ sleep 15
 
 # Check if Form.io server is responding
 for i in {1..10}; do
-    if curl -f http://localhost:3001/health &> /dev/null; then
-        print_success "Form.io server is ready at http://localhost:3001"
+    if curl -f http://localhost:3002/health &> /dev/null; then
+        print_success "Form.io server is ready at http://localhost:3002"
         break
     fi
     print_status "Waiting for Form.io server... (attempt $i/10)"
@@ -38,5 +38,5 @@ done
 
 print_success "Development environment is ready!"
 echo -e "\nAccess URLs:"
-echo -e "  • Form.io Admin: http://localhost:3001"
+echo -e "  • Form.io Admin: http://localhost:3002"
 echo -e "  • Login: admin@example.com / password123"

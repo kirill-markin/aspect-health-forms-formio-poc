@@ -1,0 +1,57 @@
+services:
+  # MongoDB database for Form.io Community Edition
+  mongodb:
+    image: mongo:4.4
+    container_name: formio-mongodb
+    restart: unless-stopped
+    platform: linux/amd64
+    volumes:
+      - "./data/db:/data/db"
+    networks:
+      - formio-network
+
+  # Form.io Community Edition Server
+  formio-server:
+    image: formio/formio:rc
+    container_name: formio-server
+    restart: unless-stopped
+    platform: linux/amd64
+    depends_on:
+      - mongodb
+    environment:
+      DEBUG: "formio:*"
+      ROOT_EMAIL: admin@example.com
+      ROOT_PASSWORD: password123
+      NODE_CONFIG: |
+        {
+          "mongo": "mongodb://mongodb:27017/formio",
+          "port": 3001,
+          "jwt": {
+            "secret": "your-super-secret-jwt-key-change-in-production"
+          }
+        }
+    ports:
+      - "3002:3001"
+    networks:
+      - formio-network
+
+  # Redis for caching (optional but recommended)
+  redis:
+    image: redis:7-alpine
+    container_name: formio-redis
+    restart: unless-stopped
+    platform: linux/amd64
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - formio-network
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  formio-network:
+    driver: bridge

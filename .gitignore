@@ -1,0 +1,592 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🚀 AWESOME .GITIGNORE FOR FORM.IO + REACT NATIVE HEALTHCARE FORMS PROJECT
+# ═══════════════════════════════════════════════════════════════════════════════
+# 
+# This .gitignore is designed for a healthcare forms management system built with:
+# - Form.io (headless CMS + form builder)
+# - React Native/Expo (mobile frontend)
+# - MongoDB (database)
+# - Docker (containerization)
+# - Node.js (backend scripts)
+#
+# 🏥 Special attention to healthcare data compliance (HIPAA/GDPR)
+# 🔒 Security-first approach to prevent credential leaks
+# 📱 Mobile development optimizations
+# 🐳 Docker and container considerations
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🔐 SECURITY & CREDENTIALS (HIGHEST PRIORITY)                                 │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Environment files with sensitive configuration
+.env
+.env.*
+!.env.example
+!.env.template
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+.env.backup
+
+# App-specific environment files
+app/.env
+app/.env.*
+!app/.env.example
+!app/.env.template
+
+# API keys and authentication
+.secrets/
+.credentials/
+.auth/
+api-keys.json
+jwt-secret.txt
+auth-tokens.json
+service-account.json
+firebase-adminsdk-*.json
+
+# Certificates and keys
+*.key
+*.pem
+*.p12
+*.p8
+*.keystore
+*.jks
+*.crt
+*.cer
+*.pfx
+ssl/
+certs/
+keys/
+
+# SSH keys
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🏥 HEALTHCARE & COMPLIANCE (HIPAA/GDPR)                                      │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Patient data directories (NEVER commit patient data)
+patient-data/
+phi/
+pii/
+health-records/
+medical-data/
+patient-identifiable-information/
+protected-health-information/
+
+# Form submissions with patient data
+form-submissions/
+submission-data/
+patient-forms/
+health-surveys/
+medical-responses/
+
+# Export files that might contain patient data
+export-data/
+exports/
+patient-exports/
+medical-exports/
+*.hipaa
+*.phi
+*.pii
+
+# Audit logs and access logs (may contain sensitive info)
+audit-logs/
+access-logs/
+security-logs/
+compliance-logs/
+
+# Database dumps (could contain patient data)
+*.sql
+*.dump
+*.backup
+*.bak
+mongo-dump/
+db-backup/
+database-exports/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🗄️ DATABASE & DOCKER VOLUMES                                                  │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# MongoDB data directories
+data/
+data/db/
+mongo-data/
+mongodb-data/
+db-data/
+
+# Redis data
+redis-data/
+dump.rdb
+appendonly.aof
+redis.conf
+
+# Docker volumes and container data
+docker-data/
+volumes/
+.docker/
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Database configuration files with credentials
+mongod.conf
+redis.conf
+database.yml
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📦 NODE.JS & PACKAGE MANAGERS                                                │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Package manager files (choose based on your team preference)
+package-lock.json
+yarn.lock
+.pnpm-lock.yaml
+.yarn/
+
+# NPM
+.npm/
+npm-debug.log*
+npm-error.log*
+
+# Yarn
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+yarn-debug.log*
+yarn-error.log*
+
+# PNPM
+.pnpm-debug.log*
+.pnpm/
+pnpm-lock.yaml
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📱 REACT NATIVE & EXPO                                                       │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Expo
+.expo/
+.expo-shared/
+expo-env.d.ts
+web-build/
+dist/
+
+# React Native
+.react-native/
+react-native-packager-cache-*/
+
+# Metro bundler
+.metro-health-check*
+.metro/
+metro-cache/
+
+# React Native debugger
+flipper-rn-addons.json
+
+# EAS (Expo Application Services)
+.eas/
+eas.json.local
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📱 MOBILE BUILD FILES                                                        │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# iOS
+ios/Pods/
+ios/build/
+ios/DerivedData/
+*.xcworkspace
+*.xcuserdata
+*.xcscmblueprint
+ios/.xcode.env.local
+
+# Android
+android/app/build/
+android/app/src/main/assets/
+android/build/
+android/.gradle/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/app/release/
+*.apk
+*.aab
+*.keystore
+keystore.properties
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🏗️ BUILD OUTPUTS & GENERATED FILES                                           │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# TypeScript
+*.tsbuildinfo
+.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Build directories
+build/
+dist/
+out/
+lib/
+coverage/
+
+# Webpack
+.webpack/
+webpack-bundle-analyzer-report.html
+
+# Parcel
+.parcel-cache/
+.cache/
+
+# Next.js
+.next/
+out/
+
+# Nuxt.js
+.nuxt/
+.output/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📝 LOGS & TEMPORARY FILES                                                    │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output/
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+.temp/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 💻 SYSTEM & IDE FILES                                                        │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🛠️ IDE & EDITOR FILES                                                         │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*~
+*.swp
+*.swo
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.atom/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🎯 FORM.IO & CMS SPECIFIC                                                    │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Form.io uploads and file storage
+uploads/
+file-storage/
+form-uploads/
+media/
+assets/uploads/
+
+# Form.io specific cache
+.formio/
+formio-cache/
+
+# PDF generated files
+generated-pdfs/
+form-pdfs/
+pdf-output/
+*.pdf
+
+# Form exports
+form-exports/
+form-backups/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🧪 TESTING & QUALITY ASSURANCE                                               │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+junit.xml
+test-report.xml
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Jest
+jest.config.local.js
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ESLint
+.eslintcache
+
+# Stylelint
+.stylelintcache
+
+# Prettier
+.prettiercache
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🚀 DEPLOYMENT & CI/CD                                                        │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Serverless
+.serverless/
+.sls/
+
+# Firebase
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+
+# Docker
+Dockerfile.local
+docker-compose.debug.yml
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📊 ANALYTICS & MONITORING                                                    │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Bundle analyzer
+webpack-bundle-analyzer-report.html
+bundle-report.html
+
+# Lighthouse reports
+lighthouse-report.html
+
+# Performance monitoring
+.lighthouseci/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🔄 VERSION CONTROL & BACKUP                                                  │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*~
+
+# Patch files
+*.patch
+*.diff
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🌐 WEB & BROWSER                                                             │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Browser downloads
+downloads/
+
+# Chrome
+.chrome/
+
+# Safari
+.safari/
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 📚 DOCUMENTATION & MISC                                                      │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Documentation build
+docs/_build/
+site/
+.docusaurus/
+
+# Storybook
+storybook-static/
+.storybook/local.js
+
+# Localization
+*.mo
+*.pot
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🎨 DESIGN & ASSETS                                                           │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Large media files (optional - decide based on your needs)
+# *.mp4
+# *.mov
+# *.avi
+# *.mkv
+# *.psd
+# *.ai
+# *.sketch
+
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ 🔧 MISCELLANEOUS                                                             │
+# └─────────────────────────────────────────────────────────────────────────────┘
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🎉 END OF AWESOME .GITIGNORE
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# 📝 NOTES:
+# - This .gitignore prioritizes security and healthcare compliance
+# - Environment files are excluded but .example files are tracked
+# - Database files and patient data are strictly excluded
+# - Mobile development artifacts are comprehensively covered
+# - Choose package manager lock files based on your team preference
+#
+# 🔄 MAINTENANCE:
+# - Review quarterly for new patterns
+# - Update when adding new technologies
+# - Ensure team alignment on included/excluded files
+#
+# 🆘 NEED HELP?
+# - Check specific sections above for targeted ignoring
+# - Test with: git check-ignore -v <filename>
+# - Use: git clean -Xn to preview what would be removed
+#
+# ═══════════════════════════════════════════════════════════════════════════════

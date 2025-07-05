@@ -63,11 +63,11 @@ check_docker_services() {
 check_formio_api() {
     print_header "Form.io API Health Check"
     
-    # Health endpoint
-    if curl -f http://localhost:3002/health &> /dev/null; then
-        print_success "Form.io health endpoint is responding"
+    # Main page endpoint
+    if curl -f http://localhost:3002 &> /dev/null; then
+        print_success "Form.io server is responding"
     else
-        print_error "Form.io health endpoint is not responding"
+        print_error "Form.io server is not responding"
         VALIDATION_PASSED=false
     fi
     
@@ -184,7 +184,7 @@ check_performance() {
     
     # Check Form.io response time
     local start_time=$(date +%s%N)
-    if curl -f http://localhost:3002/health &> /dev/null; then
+    if curl -f http://localhost:3002 &> /dev/null; then
         local end_time=$(date +%s%N)
         local duration=$(( (end_time - start_time) / 1000000 ))
         

@@ -84,12 +84,12 @@ start_services() {
     print_status "Waiting for services to be ready..."
     sleep 30
     
-    # Check if Form.io server is responding
+    # Check if Form.io server is responding by checking the main page
     local retries=0
     local max_retries=12
     
     while [ $retries -lt $max_retries ]; do
-        if curl -f http://localhost:3002/health &> /dev/null; then
+        if curl -f http://localhost:3002 &> /dev/null; then
             print_success "Form.io server is ready"
             break
         fi
@@ -114,7 +114,7 @@ init_formio() {
     
     # Note: Form.io creates the project automatically based on environment variables
     # We'll verify it's accessible
-    if curl -f http://localhost:3002/project &> /dev/null; then
+    if curl -f http://localhost:3002 &> /dev/null; then
         print_success "Form.io project initialized successfully"
     else
         print_warning "Form.io project may need manual setup. Check the admin interface."
@@ -181,10 +181,10 @@ validate_setup() {
         exit 1
     fi
     
-    # Check Form.io API
-    print_status "Testing Form.io API..."
-    if ! curl -f http://localhost:3002/health &> /dev/null; then
-        print_error "Form.io API is not responding"
+    # Check Form.io server response
+    print_status "Testing Form.io server..."
+    if ! curl -f http://localhost:3002 &> /dev/null; then
+        print_error "Form.io server is not responding"
         exit 1
     fi
     

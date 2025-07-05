@@ -46,7 +46,7 @@ wait_for_formio() {
     local max_retries=20
     
     while [ $retries -lt $max_retries ]; do
-        if curl -f "${FORMIO_URL}/health" &> /dev/null; then
+        if curl -f "${FORMIO_URL}" &> /dev/null; then
             print_success "Form.io server is ready"
             return 0
         fi

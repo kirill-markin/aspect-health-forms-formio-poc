@@ -152,19 +152,19 @@ EOF
 seed_demo_data() {
     print_header "Creating Demo Forms"
     
-    print_status "Seeding demo data into Form.io..."
+    print_status "Importing forms into Form.io..."
     
-    # Run the demo data seeding script
-    if [ -f "scripts/seed-demo-data.sh" ]; then
-        ./scripts/seed-demo-data.sh
+    # Run the Node.js import script
+    if [ -f "scripts/import-forms.js" ]; then
+        node scripts/import-forms.js
         if [ $? -eq 0 ]; then
-            print_success "Demo data seeding completed successfully"
+            print_success "Forms imported successfully"
         else
-            print_warning "Demo data seeding failed, but setup will continue"
-            print_warning "You can run './scripts/seed-demo-data.sh' manually later"
+            print_warning "Form import failed, but setup will continue"
+            print_warning "You can run 'node scripts/import-forms.js' manually later"
         fi
     else
-        print_warning "Demo data seeding script not found"
+        print_warning "Form import script not found"
         print_warning "Demo forms will need to be created manually"
     fi
 }
@@ -190,7 +190,7 @@ validate_setup() {
     
     # Check MongoDB
     print_status "Testing MongoDB connection..."
-    if ! docker-compose exec -T mongodb mongosh --eval "db.runCommand({ping: 1})" &> /dev/null; then
+    if ! docker-compose exec -T mongodb mongo --eval "db.runCommand({ping: 1})" &> /dev/null; then
         print_error "MongoDB is not accessible"
         exit 1
     fi

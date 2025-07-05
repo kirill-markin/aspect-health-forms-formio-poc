@@ -90,7 +90,7 @@ check_formio_api() {
 check_mongodb() {
     print_header "MongoDB Connection"
     
-    if docker-compose exec -T mongodb mongosh --eval "db.runCommand({ping: 1})" &> /dev/null; then
+    if docker-compose exec -T mongodb mongo --eval "db.runCommand({ping: 1})" &> /dev/null; then
         print_success "MongoDB is accessible and responding"
     else
         print_error "MongoDB connection failed"
@@ -98,7 +98,7 @@ check_mongodb() {
     fi
     
     # Check if Form.io database exists
-    if docker-compose exec -T mongodb mongosh --eval "use formio; db.stats()" &> /dev/null; then
+    if docker-compose exec -T mongodb mongo --eval "use formio; db.stats()" &> /dev/null; then
         print_success "Form.io database exists"
     else
         print_warning "Form.io database may not be initialized yet"

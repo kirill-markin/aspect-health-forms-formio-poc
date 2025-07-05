@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import HomeScreen from './src/screens/HomeScreen';
 import FormScreen from './src/screens/FormScreen';
+import WebFormScreen from './src/screens/WebFormScreen.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,9 +34,16 @@ export default function App() {
               title: 'Form',
             }}
           />
+          <Stack.Screen 
+            name="WebFormScreen" 
+            component={WebFormScreen}
+            options={{
+              title: 'Web Form',
+            }}
+          />
         </Stack.Navigator>
         <StatusBar style="light" />
       </NavigationContainer>
     </SafeAreaProvider>
   );
-}
+} 

@@ -26,15 +26,7 @@
       "package": "com.aspecthealth.forms.formio"
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
     }
   }
 }

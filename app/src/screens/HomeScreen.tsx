@@ -54,7 +54,7 @@ export const HomeScreen: React.FC = () => {
   };
 
   const handleFormPress = (form: FormioForm) => {
-    navigation.navigate('FormScreen' as never, { form } as never);
+    (navigation as any).navigate('FormScreen', { form });
   };
 
   const handleCreateSampleForm = async () => {
@@ -297,8 +297,18 @@ export const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Aspect Health Forms</Text>
-        <Text style={styles.headerSubtitle}>Form.io POC</Text>
+        <View style={styles.headerContent}>
+          <View style={styles.headerText}>
+            <Text style={styles.headerTitle}>Aspect Health Forms</Text>
+            <Text style={styles.headerSubtitle}>Form.io POC</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.webFormButton}
+            onPress={() => (navigation as any).navigate('WebFormScreen')}
+          >
+            <Text style={styles.webFormButtonText}>WebView Form</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {error && !loading ? (
@@ -347,6 +357,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingHorizontal: 20,
   },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerText: {
+    flex: 1,
+  },
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -356,6 +374,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'rgba(255, 255, 255, 0.8)',
     marginTop: 4,
+  },
+  webFormButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    marginLeft: 16,
+  },
+  webFormButtonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
   },
   listContainer: {
     padding: 16,

@@ -75,8 +75,8 @@
       "tableView": false,
       "conditional": {
         "show": true,
-        "when": "platform_purpose",
-        "neq": ""
+        "when": "privacy_policy",
+        "eq": "yes"
       },
       "components": [
         {
@@ -104,8 +104,8 @@
       "tableView": false,
       "conditional": {
         "show": true,
-        "when": "interests",
-        "neq": ""
+        "when": "privacy_policy",
+        "eq": "yes"
       },
       "components": [
         {
@@ -131,8 +131,8 @@
       "tableView": false,
       "conditional": {
         "show": true,
-        "when": "about_yourself",
-        "neq": ""
+        "when": "privacy_policy",
+        "eq": "yes"
       },
       "components": [
         {

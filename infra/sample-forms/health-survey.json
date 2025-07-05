@@ -1,416 +1,111 @@
 {
-  "title": "Comprehensive Health Survey",
-  "name": "comprehensiveHealthSurvey",
-  "path": "comprehensive-health-survey",
+  "title": "Privacy Policy Demo",
+  "name": "privacyPolicyDemo",
+  "path": "privacy-policy-demo",
   "type": "form",
   "display": "form",
   "components": [
     {
-      "type": "panel",
-      "key": "personalInfoPanel",
-      "title": "Personal Information",
-      "components": [
-        {
-          "type": "textfield",
-          "key": "firstName",
-          "label": "First Name",
-          "placeholder": "Enter your first name",
-          "input": true,
-          "required": true,
-          "validate": {
-            "required": true,
-            "minLength": 2,
-            "maxLength": 50
-          }
-        },
-        {
-          "type": "textfield",
-          "key": "lastName",
-          "label": "Last Name",
-          "placeholder": "Enter your last name",
-          "input": true,
-          "required": true,
-          "validate": {
-            "required": true,
-            "minLength": 2,
-            "maxLength": 50
-          }
-        },
-        {
-          "type": "email",
-          "key": "email",
-          "label": "Email Address",
-          "placeholder": "Enter your email",
-          "input": true,
-          "required": true,
-          "validate": {
-            "required": true
-          }
-        },
-        {
-          "type": "phoneNumber",
-          "key": "phone",
-          "label": "Phone Number",
-          "placeholder": "Enter your phone number",
-          "input": true,
-          "required": false
-        },
-        {
-          "type": "number",
-          "key": "age",
-          "label": "Age",
-          "placeholder": "Enter your age",
-          "input": true,
-          "required": true,
-          "validate": {
-            "required": true,
-            "min": 18,
-            "max": 120
-          }
-        },
-        {
-          "type": "select",
-          "key": "gender",
-          "label": "Gender",
-          "input": true,
-          "required": true,
-          "data": {
-            "values": [
-              { "label": "Male", "value": "male" },
-              { "label": "Female", "value": "female" },
-              { "label": "Non-binary", "value": "non_binary" },
-              { "label": "Prefer not to say", "value": "prefer_not_to_say" }
-            ]
-          }
-        }
+      "type": "radio",
+      "key": "privacy_policy",
+      "label": "Do you accept our privacy policy?",
+      "input": true,
+      "required": true,
+      "values": [
+        { "label": "Yes, I accept", "value": "yes" },
+        { "label": "No, I don't accept", "value": "no" }
       ]
     },
     {
-      "type": "panel",
-      "key": "healthAssessmentPanel",
-      "title": "Health Assessment",
-      "components": [
-        {
-          "type": "radio",
-          "key": "overallHealth",
-          "label": "How would you rate your overall health?",
-          "input": true,
-          "required": true,
-          "values": [
-            { "label": "Excellent", "value": "excellent" },
-            { "label": "Very Good", "value": "very_good" },
-            { "label": "Good", "value": "good" },
-            { "label": "Fair", "value": "fair" },
-            { "label": "Poor", "value": "poor" }
-          ]
-        },
-        {
-          "type": "textarea",
-          "key": "healthConcerns",
-          "label": "Please describe any current health concerns:",
-          "placeholder": "Describe any health issues or concerns...",
-          "input": true,
-          "required": false,
-          "conditional": {
-            "show": true,
-            "when": "overallHealth",
-            "eq": "fair"
-          }
-        },
-        {
-          "type": "textarea",
-          "key": "urgentHealthConcerns",
-          "label": "Please provide details about your health concerns that need immediate attention:",
-          "placeholder": "Describe urgent health concerns in detail...",
-          "input": true,
-          "required": true,
-          "conditional": {
-            "show": true,
-            "when": "overallHealth",
-            "eq": "poor"
-          }
-        },
-        {
-          "type": "selectboxes",
-          "key": "currentSymptoms",
-          "label": "Are you currently experiencing any of the following symptoms? (Select all that apply)",
-          "input": true,
-          "values": [
-            { "label": "Fatigue or tiredness", "value": "fatigue" },
-            { "label": "Headaches", "value": "headaches" },
-            { "label": "Difficulty sleeping", "value": "insomnia" },
-            { "label": "Digestive issues", "value": "digestive" },
-            { "label": "Joint or muscle pain", "value": "joint_pain" },
-            { "label": "Mood changes", "value": "mood_changes" },
-            { "label": "Shortness of breath", "value": "breathing" },
-            { "label": "Chest pain", "value": "chest_pain" },
-            { "label": "Dizziness", "value": "dizziness" },
-            { "label": "Changes in appetite", "value": "appetite_changes" },
-            { "label": "None of the above", "value": "none" }
-          ]
-        },
-        {
-          "type": "textarea",
-          "key": "symptomDetails",
-          "label": "Please provide more details about your symptoms:",
-          "placeholder": "Describe when symptoms started, severity, triggers, etc...",
-          "input": true,
-          "required": false,
-          "conditional": {
-            "show": false,
-            "when": "currentSymptoms",
-            "eq": "none"
-          }
-        }
-      ]
+      "type": "radio",
+      "key": "privacy_rejection",
+      "label": "Unfortunately, we cannot proceed without accepting our privacy policy. Please accept it to continue.",
+      "input": true,
+      "required": true,
+      "values": [
+        { "label": "OK", "value": "ok" }
+      ],
+      "conditional": {
+        "show": true,
+        "when": "privacy_policy",
+        "eq": "no"
+      }
     },
     {
-      "type": "panel",
-      "key": "medicalHistoryPanel",
-      "title": "Medical History",
-      "components": [
-        {
-          "type": "selectboxes",
-          "key": "medicalConditions",
-          "label": "Do you have any of the following medical conditions? (Select all that apply)",
-          "input": true,
-          "values": [
-            { "label": "Diabetes", "value": "diabetes" },
-            { "label": "High blood pressure", "value": "hypertension" },
-            { "label": "Heart disease", "value": "heart_disease" },
-            { "label": "Asthma", "value": "asthma" },
-            { "label": "COPD", "value": "copd" },
-            { "label": "Arthritis", "value": "arthritis" },
-            { "label": "Depression", "value": "depression" },
-            { "label": "Anxiety", "value": "anxiety" },
-            { "label": "Thyroid disorders", "value": "thyroid" },
-            { "label": "Kidney disease", "value": "kidney_disease" },
-            { "label": "Cancer", "value": "cancer" },
-            { "label": "None of the above", "value": "none" }
-          ]
-        },
-        {
-          "type": "textarea",
-          "key": "medications",
-          "label": "Please list all medications you are currently taking:",
-          "placeholder": "Include prescription medications, over-the-counter drugs, and supplements...",
-          "input": true,
-          "required": false
-        },
-        {
-          "type": "textarea",
-          "key": "allergies",
-          "label": "Do you have any known allergies?",
-          "placeholder": "List any food, medication, or environmental allergies...",
-          "input": true,
-          "required": false
-        },
-        {
-          "type": "radio",
-          "key": "smokingStatus",
-          "label": "Smoking status:",
-          "input": true,
-          "required": true,
-          "values": [
-            { "label": "Never smoked", "value": "never" },
-            { "label": "Former smoker", "value": "former" },
-            { "label": "Current smoker", "value": "current" }
-          ]
-        },
-        {
-          "type": "number",
-          "key": "smokingPackYears",
-          "label": "How many pack-years did you smoke? (packs per day × years smoked)",
-          "input": true,
-          "required": false,
-          "conditional": {
-            "show": true,
-            "when": "smokingStatus",
-            "eq": "former"
-          },
-          "validate": {
-            "min": 0,
-            "max": 200
-          }
-        },
-        {
-          "type": "number",
-          "key": "currentSmoking",
-          "label": "How many cigarettes do you smoke per day?",
-          "input": true,
-          "required": true,
-          "conditional": {
-            "show": true,
-            "when": "smokingStatus",
-            "eq": "current"
-          },
-          "validate": {
-            "min": 1,
-            "max": 100
-          }
-        }
-      ]
+      "type": "radio",
+      "key": "platform_purpose",
+      "label": "What brought you to our platform?",
+      "input": true,
+      "required": true,
+      "values": [
+        { "label": "Learning", "value": "learning" },
+        { "label": "Business", "value": "business" },
+        { "label": "Personal use", "value": "personal" },
+        { "label": "Other", "value": "other" }
+      ],
+      "conditional": {
+        "show": true,
+        "when": "privacy_policy",
+        "eq": "yes"
+      }
     },
     {
-      "type": "panel",
-      "key": "lifestylePanel",
-      "title": "Lifestyle Factors",
-      "components": [
-        {
-          "type": "radio",
-          "key": "exerciseFrequency",
-          "label": "How often do you exercise?",
-          "input": true,
-          "required": true,
-          "values": [
-            { "label": "Daily", "value": "daily" },
-            { "label": "4-6 times per week", "value": "frequent" },
-            { "label": "2-3 times per week", "value": "moderate" },
-            { "label": "Once per week", "value": "weekly" },
-            { "label": "Rarely or never", "value": "rarely" }
-          ]
-        },
-        {
-          "type": "radio",
-          "key": "alcoholConsumption",
-          "label": "How often do you consume alcohol?",
-          "input": true,
-          "required": true,
-          "values": [
-            { "label": "Never", "value": "never" },
-            { "label": "Rarely (special occasions)", "value": "rarely" },
-            { "label": "1-2 times per week", "value": "moderate" },
-            { "label": "3-4 times per week", "value": "frequent" },
-            { "label": "Daily", "value": "daily" }
-          ]
-        },
-        {
-          "type": "number",
-          "key": "sleepHours",
-          "label": "How many hours of sleep do you typically get per night?",
-          "input": true,
-          "required": true,
-          "validate": {
-            "min": 3,
-            "max": 12
-          }
-        },
-        {
-          "type": "radio",
-          "key": "stressLevel",
-          "label": "How would you rate your current stress level?",
-          "input": true,
-          "required": true,
-          "values": [
-            { "label": "Very low", "value": "very_low" },
-            { "label": "Low", "value": "low" },
-            { "label": "Moderate", "value": "moderate" },
-            { "label": "High", "value": "high" },
-            { "label": "Very high", "value": "very_high" }
-          ]
-        }
-      ]
+      "type": "selectboxes",
+      "key": "interests",
+      "label": "What areas are you interested in? (Select all that apply)",
+      "input": true,
+      "required": false,
+      "values": [
+        { "label": "Technology", "value": "technology" },
+        { "label": "Health & Wellness", "value": "health" },
+        { "label": "Education", "value": "education" },
+        { "label": "Finance", "value": "finance" },
+        { "label": "Arts & Culture", "value": "arts" },
+        { "label": "Sports & Recreation", "value": "sports" }
+      ],
+      "conditional": {
+        "show": true,
+        "when": "platform_purpose",
+        "neq": ""
+      }
     },
     {
-      "type": "panel",
-      "key": "satisfactionPanel",
-      "title": "Healthcare Experience",
-      "components": [
-        {
-          "type": "survey",
-          "key": "healthcareSatisfaction",
-          "label": "Please rate your satisfaction with the following aspects of your healthcare:",
-          "input": true,
-          "questions": [
-            {
-              "label": "Quality of care received",
-              "value": "care_quality"
-            },
-            {
-              "label": "Communication with healthcare providers",
-              "value": "communication"
-            },
-            {
-              "label": "Wait times for appointments",
-              "value": "wait_times"
-            },
-            {
-              "label": "Ease of scheduling appointments",
-              "value": "scheduling"
-            },
-            {
-              "label": "Overall healthcare experience",
-              "value": "overall_experience"
-            }
-          ],
-          "values": [
-            { "label": "Very Dissatisfied", "value": 1 },
-            { "label": "Dissatisfied", "value": 2 },
-            { "label": "Neutral", "value": 3 },
-            { "label": "Satisfied", "value": 4 },
-            { "label": "Very Satisfied", "value": 5 }
-          ]
-        },
-        {
-          "type": "number",
-          "key": "npsScore",
-          "label": "Net Promoter Score: On a scale of 0-10, how likely are you to recommend our healthcare services to a friend or colleague?",
-          "input": true,
-          "required": true,
-          "validate": {
-            "min": 0,
-            "max": 10
-          }
-        },
-        {
-          "type": "textarea",
-          "key": "improvementSuggestions",
-          "label": "What could we do to improve your healthcare experience?",
-          "placeholder": "Please share your suggestions for improvement...",
-          "input": true,
-          "required": false
-        },
-        {
-          "type": "textarea",
-          "key": "additionalComments",
-          "label": "Any additional comments or feedback:",
-          "placeholder": "Please share any other thoughts or feedback...",
-          "input": true,
-          "required": false
-        }
-      ]
+      "type": "textfield",
+      "key": "about_yourself",
+      "label": "Tell us a bit about yourself:",
+      "placeholder": "Enter some information about yourself...",
+      "input": true,
+      "required": true,
+      "validate": {
+        "required": true,
+        "minLength": 10,
+        "maxLength": 500
+      },
+      "conditional": {
+        "show": true,
+        "when": "interests",
+        "neq": ""
+      }
     },
     {
-      "type": "panel",
-      "key": "consentPanel",
-      "title": "Consent and Privacy",
-      "components": [
-        {
-          "type": "checkbox",
-          "key": "dataConsent",
-          "label": "I consent to the collection and use of my health information for healthcare purposes and quality improvement initiatives",
-          "input": true,
-          "required": true
-        },
-        {
-          "type": "checkbox",
-          "key": "communicationConsent",
-          "label": "I consent to being contacted for follow-up regarding my health concerns or survey responses",
-          "input": true,
-          "required": false
-        },
-        {
-          "type": "checkbox",
-          "key": "researchConsent",
-          "label": "I consent to my anonymized data being used for healthcare research purposes",
-          "input": true,
-          "required": false
-        }
-      ]
+      "type": "textarea",
+      "key": "detailed_goals",
+      "label": "Tell us more about your goals and interests:",
+      "placeholder": "Describe your goals and interests in detail...",
+      "input": true,
+      "required": false,
+      "validate": {
+        "maxLength": 2000
+      },
+      "conditional": {
+        "show": true,
+        "when": "about_yourself",
+        "neq": ""
+      }
     }
   ],
-  "tags": ["health", "survey", "comprehensive", "patient-intake"],
+  "tags": ["privacy", "demo", "onboarding"],
   "properties": {
-    "description": "A comprehensive health survey for collecting detailed patient information, health assessment, medical history, lifestyle factors, and satisfaction feedback."
+    "description": "Privacy policy demo form with conditional logic for user onboarding."
   }
 }

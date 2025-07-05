@@ -3,109 +3,154 @@
   "name": "privacyPolicyDemo",
   "path": "privacy-policy-demo",
   "type": "form",
-  "display": "form",
+  "display": "wizard",
   "components": [
     {
-      "type": "radio",
-      "key": "privacy_policy",
-      "label": "Do you accept our privacy policy?",
-      "input": true,
-      "required": true,
-      "values": [
-        { "label": "Yes, I accept", "value": "yes" },
-        { "label": "No, I don't accept", "value": "no" }
+      "type": "panel",
+      "key": "privacyStep",
+      "title": "Privacy Policy",
+      "input": false,
+      "tableView": false,
+      "components": [
+        {
+          "type": "radio",
+          "key": "privacy_policy",
+          "label": "Do you accept our privacy policy?",
+          "input": true,
+          "required": true,
+          "values": [
+            { "label": "Yes, I accept", "value": "yes" },
+            { "label": "No, I don't accept", "value": "no" }
+          ]
+        },
+        {
+          "type": "radio",
+          "key": "privacy_rejection",
+          "label": "Unfortunately, we cannot proceed without accepting our privacy policy. Please accept it to continue.",
+          "input": true,
+          "required": true,
+          "values": [
+            { "label": "OK", "value": "ok" }
+          ],
+          "conditional": {
+            "show": true,
+            "when": "privacy_policy",
+            "eq": "no"
+          }
+        }
       ]
     },
     {
-      "type": "radio",
-      "key": "privacy_rejection",
-      "label": "Unfortunately, we cannot proceed without accepting our privacy policy. Please accept it to continue.",
-      "input": true,
-      "required": true,
-      "values": [
-        { "label": "OK", "value": "ok" }
-      ],
-      "conditional": {
-        "show": true,
-        "when": "privacy_policy",
-        "eq": "no"
-      }
-    },
-    {
-      "type": "radio",
-      "key": "platform_purpose",
-      "label": "What brought you to our platform?",
-      "input": true,
-      "required": true,
-      "values": [
-        { "label": "Learning", "value": "learning" },
-        { "label": "Business", "value": "business" },
-        { "label": "Personal use", "value": "personal" },
-        { "label": "Other", "value": "other" }
-      ],
+      "type": "panel",
+      "key": "purposeStep",
+      "title": "Your Purpose",
+      "input": false,
+      "tableView": false,
       "conditional": {
         "show": true,
         "when": "privacy_policy",
         "eq": "yes"
-      }
+      },
+      "components": [
+        {
+          "type": "radio",
+          "key": "platform_purpose",
+          "label": "What brought you to our platform?",
+          "input": true,
+          "required": true,
+          "values": [
+            { "label": "Learning", "value": "learning" },
+            { "label": "Business", "value": "business" },
+            { "label": "Personal use", "value": "personal" },
+            { "label": "Other", "value": "other" }
+          ]
+        }
+      ]
     },
     {
-      "type": "selectboxes",
-      "key": "interests",
-      "label": "What areas are you interested in? (Select all that apply)",
-      "input": true,
-      "required": false,
-      "values": [
-        { "label": "Technology", "value": "technology" },
-        { "label": "Health & Wellness", "value": "health" },
-        { "label": "Education", "value": "education" },
-        { "label": "Finance", "value": "finance" },
-        { "label": "Arts & Culture", "value": "arts" },
-        { "label": "Sports & Recreation", "value": "sports" }
-      ],
+      "type": "panel",
+      "key": "interestsStep",
+      "title": "Your Interests",
+      "input": false,
+      "tableView": false,
       "conditional": {
         "show": true,
         "when": "platform_purpose",
         "neq": ""
-      }
+      },
+      "components": [
+        {
+          "type": "selectboxes",
+          "key": "interests",
+          "label": "What areas are you interested in? (Select all that apply)",
+          "input": true,
+          "required": false,
+          "values": [
+            { "label": "Technology", "value": "technology" },
+            { "label": "Health & Wellness", "value": "health" },
+            { "label": "Education", "value": "education" },
+            { "label": "Finance", "value": "finance" },
+            { "label": "Arts & Culture", "value": "arts" },
+            { "label": "Sports & Recreation", "value": "sports" }
+          ]
+        }
+      ]
     },
     {
-      "type": "textfield",
-      "key": "about_yourself",
-      "label": "Tell us a bit about yourself:",
-      "placeholder": "Enter some information about yourself...",
-      "input": true,
-      "required": true,
-      "validate": {
-        "required": true,
-        "minLength": 10,
-        "maxLength": 500
-      },
+      "type": "panel",
+      "key": "aboutStep",
+      "title": "About You",
+      "input": false,
+      "tableView": false,
       "conditional": {
         "show": true,
         "when": "interests",
         "neq": ""
-      }
+      },
+      "components": [
+        {
+          "type": "textfield",
+          "key": "about_yourself",
+          "label": "Tell us a bit about yourself:",
+          "placeholder": "Enter some information about yourself...",
+          "input": true,
+          "required": true,
+          "validate": {
+            "required": true,
+            "minLength": 10,
+            "maxLength": 500
+          }
+        }
+      ]
     },
     {
-      "type": "textarea",
-      "key": "detailed_goals",
-      "label": "Tell us more about your goals and interests:",
-      "placeholder": "Describe your goals and interests in detail...",
-      "input": true,
-      "required": false,
-      "validate": {
-        "maxLength": 2000
-      },
+      "type": "panel",
+      "key": "goalsStep",
+      "title": "Your Goals",
+      "input": false,
+      "tableView": false,
       "conditional": {
         "show": true,
         "when": "about_yourself",
         "neq": ""
-      }
+      },
+      "components": [
+        {
+          "type": "textarea",
+          "key": "detailed_goals",
+          "label": "Tell us more about your goals and interests:",
+          "placeholder": "Describe your goals and interests in detail...",
+          "input": true,
+          "required": false,
+          "validate": {
+            "maxLength": 2000
+          }
+        }
+      ]
     }
   ],
-  "tags": ["privacy", "demo", "onboarding"],
+  "tags": ["privacy", "demo", "onboarding", "wizard"],
   "properties": {
-    "description": "Privacy policy demo form with conditional logic for user onboarding."
+    "description": "Privacy policy demo form with wizard navigation and conditional logic for user onboarding."
   }
 }

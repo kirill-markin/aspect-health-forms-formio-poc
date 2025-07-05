@@ -12,6 +12,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { FormioForm } from '@/types/formio';
 import formioClient from '@/api/formio';
+import { theme } from '@/theme';
 
 export const HomeScreen: React.FC = () => {
   const [forms, setForms] = useState<FormioForm[]>([]);
@@ -288,7 +289,7 @@ export const HomeScreen: React.FC = () => {
   if (loading && !refreshing) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#007AFF" />
+        <ActivityIndicator size="large" color={theme.colors.primary} />
         <Text style={styles.loadingText}>Loading forms...</Text>
       </View>
     );
@@ -299,15 +300,12 @@ export const HomeScreen: React.FC = () => {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerText}>
-            <Text style={styles.headerTitle}>Aspect Health Forms</Text>
-            <Text style={styles.headerSubtitle}>Form.io POC</Text>
+            <Text style={styles.title}>Welcome to</Text>
+            <Text style={styles.titleBold}>Aspect</Text>
+            <Text style={styles.subtitle}>
+              Complete health surveys and assessments to help us provide better care
+            </Text>
           </View>
-          <TouchableOpacity
-            style={styles.webFormButton}
-            onPress={() => (navigation as any).navigate('WebFormScreen')}
-          >
-            <Text style={styles.webFormButtonText}>WebView Form</Text>
-          </TouchableOpacity>
         </View>
       </View>
 
@@ -326,7 +324,7 @@ export const HomeScreen: React.FC = () => {
             <RefreshControl
               refreshing={refreshing}
               onRefresh={handleRefresh}
-              colors={['#007AFF']}
+              colors={[theme.colors.primary]}
             />
           }
           ListEmptyComponent={renderEmptyState}
@@ -349,13 +347,15 @@ export const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: theme.colors.background,
   },
   header: {
-    backgroundColor: '#007AFF',
     paddingTop: 60,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
+    paddingBottom: 32,
+    backgroundColor: theme.colors.primary,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
   },
   headerContent: {
     flexDirection: 'row',
@@ -365,15 +365,26 @@ const styles = StyleSheet.create({
   headerText: {
     flex: 1,
   },
-  headerTitle: {
+  title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
+    color: theme.colors.text.white,
+    textAlign: 'center',
+    marginBottom: 4,
   },
-  headerSubtitle: {
+  titleBold: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: theme.colors.text.white,
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  subtitle: {
     fontSize: 16,
-    color: 'rgba(255, 255, 255, 0.8)',
-    marginTop: 4,
+    color: theme.colors.text.white,
+    textAlign: 'center',
+    lineHeight: 22,
+    paddingHorizontal: 20,
+    opacity: 0.9,
   },
   webFormButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -383,12 +394,12 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   webFormButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 14,
     fontWeight: '600',
   },
   listContainer: {
-    padding: 16,
+    padding: 24,
   },
   emptyListContainer: {
     flex: 1,
@@ -397,42 +408,42 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: theme.colors.background,
   },
   loadingText: {
-    marginTop: 10,
+    marginTop: 16,
     fontSize: 16,
-    color: '#666',
+    color: theme.colors.text.secondary,
   },
   formItem: {
-    backgroundColor: 'white',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: theme.colors.surface,
+    marginBottom: 24,
+    borderRadius: 20,
+    elevation: 6,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    padding: 28,
   },
   formItemContent: {
     flex: 1,
   },
   formTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#333',
-    marginBottom: 4,
+    fontSize: 22,
+    fontWeight: '700',
+    color: theme.colors.text.primary,
+    marginBottom: 12,
   },
   formDescription: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 4,
+    fontSize: 16,
+    color: theme.colors.text.secondary,
+    marginBottom: 24,
+    lineHeight: 24,
   },
   formPath: {
     fontSize: 12,
-    color: '#999',
+    color: theme.colors.text.secondary,
     marginBottom: 8,
   },
   tagsContainer: {
@@ -440,8 +451,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   tag: {
-    backgroundColor: '#e3f2fd',
-    color: '#1976d2',
+    backgroundColor: '#FFF5F8',
+    color: theme.colors.primary,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 12,
@@ -451,7 +462,7 @@ const styles = StyleSheet.create({
   },
   arrow: {
     fontSize: 20,
-    color: '#ccc',
+    color: theme.colors.text.secondary,
     marginLeft: 10,
   },
   emptyState: {
@@ -463,24 +474,24 @@ const styles = StyleSheet.create({
   emptyStateTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
+    color: theme.colors.text.primary,
     marginBottom: 8,
   },
   emptyStateDescription: {
     fontSize: 16,
-    color: '#666',
+    color: theme.colors.text.secondary,
     textAlign: 'center',
     marginBottom: 24,
     lineHeight: 22,
   },
   createButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: theme.colors.primary,
     paddingHorizontal: 24,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   createButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -489,28 +500,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,
+    backgroundColor: theme.colors.background,
   },
   errorTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#ff3b30',
+    color: theme.colors.error,
     marginBottom: 8,
   },
   errorMessage: {
     fontSize: 16,
-    color: '#666',
+    color: theme.colors.text.secondary,
     textAlign: 'center',
     marginBottom: 24,
     lineHeight: 22,
   },
   retryButton: {
-    backgroundColor: '#ff3b30',
+    backgroundColor: theme.colors.primary,
     paddingHorizontal: 24,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   retryButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -518,7 +530,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     right: 20,
-    backgroundColor: '#007AFF',
+    backgroundColor: theme.colors.primary,
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderRadius: 25,
@@ -529,7 +541,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   floatingButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 14,
     fontWeight: '600',
   },

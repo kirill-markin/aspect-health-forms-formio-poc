@@ -95,7 +95,7 @@ export default function WebFormScreen() {
         <View style={styles.webViewContainer}>
           {loading && (
             <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="#007AFF" />
+              <ActivityIndicator size="large" color="#FF6B9D" />
               <Text style={styles.loadingText}>Loading form...</Text>
             </View>
           )}
@@ -161,34 +161,36 @@ export default function WebFormScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#F5F6FA',
   },
   header: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#FF6B9D',
     paddingTop: 50,
-    paddingBottom: 16,
-    paddingHorizontal: 16,
+    paddingHorizontal: 24,
+    paddingBottom: 24,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: '#FF6B9D',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 6,
   },
   backButton: {
     flex: 1,
   },
   backButtonText: {
-    color: 'white',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '500',
   },
   headerTitle: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '600',
+    color: '#FFFFFF',
+    fontSize: 24,
+    fontWeight: '700',
     flex: 2,
     textAlign: 'center',
   },
@@ -201,7 +203,7 @@ const styles = StyleSheet.create({
   },
   webView: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
   },
   loadingContainer: {
     position: 'absolute',
@@ -215,38 +217,39 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   loadingText: {
-    marginTop: 10,
+    marginTop: 16,
     fontSize: 16,
-    color: '#666',
+    color: '#7F8C8D',
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,
+    backgroundColor: '#F5F6FA',
   },
   errorTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#ff3b30',
+    color: '#E74C3C',
     marginBottom: 8,
     textAlign: 'center',
   },
   errorMessage: {
     fontSize: 16,
-    color: '#666',
+    color: '#7F8C8D',
     textAlign: 'center',
     marginBottom: 24,
     lineHeight: 22,
   },
   retryButton: {
-    backgroundColor: '#ff3b30',
+    backgroundColor: '#FF6B9D',
     paddingHorizontal: 24,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   retryButtonText: {
-    color: 'white',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },

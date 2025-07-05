@@ -11,6 +11,7 @@ import {
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { FormRenderer } from '@/components/FormRenderer';
 import { FormioForm, FormioSubmission, FormioError } from '@/types/formio';
+import { theme } from '@/theme';
 
 interface FormScreenRouteParams {
   form: FormioForm;
@@ -232,17 +233,20 @@ export const FormScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: theme.colors.background,
   },
   header: {
-    backgroundColor: '#007AFF',
     paddingTop: 50,
-    paddingBottom: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+    backgroundColor: theme.colors.primary,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: theme.colors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 6,
   },
   headerContent: {
     flexDirection: 'row',
@@ -253,7 +257,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   backButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 16,
     fontWeight: '500',
   },
@@ -262,14 +266,18 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   headerTitleText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '600',
+    color: theme.colors.text.white,
+    fontSize: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginBottom: 8,
   },
   headerSubtitle: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    fontSize: 14,
-    marginTop: 2,
+    color: theme.colors.text.white,
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 24,
+    opacity: 0.9,
   },
   detailsButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -278,19 +286,19 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   detailsButtonText: {
-    color: 'white',
+    color: theme.colors.text.white,
     fontSize: 14,
     fontWeight: '500',
   },
   detailsContainer: {
     flex: 1,
-    backgroundColor: 'white',
-    padding: 16,
+    backgroundColor: theme.colors.surface,
+    padding: 24,
   },
   detailsTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
+    color: theme.colors.text.primary,
     marginBottom: 16,
   },
   detailItem: {
@@ -299,15 +307,15 @@ const styles = StyleSheet.create({
   detailLabel: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#666',
+    color: theme.colors.text.secondary,
     marginBottom: 4,
   },
   detailValue: {
     fontSize: 16,
-    color: '#333',
-    backgroundColor: '#f8f9fa',
+    color: theme.colors.text.primary,
+    backgroundColor: theme.colors.background,
     padding: 8,
-    borderRadius: 4,
+    borderRadius: 8,
   },
   tagsContainer: {
     flexDirection: 'row',
@@ -315,8 +323,8 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   tag: {
-    backgroundColor: '#e3f2fd',
-    color: '#1976d2',
+    backgroundColor: '#FFF5F8',
+    color: theme.colors.primary,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
@@ -327,24 +335,24 @@ const styles = StyleSheet.create({
   componentsTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333',
+    color: theme.colors.text.primary,
     marginTop: 16,
     marginBottom: 12,
   },
   componentItem: {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: theme.colors.background,
     padding: 12,
-    borderRadius: 6,
+    borderRadius: 8,
     marginBottom: 8,
   },
   componentLabel: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#333',
+    color: theme.colors.text.primary,
   },
   componentDetails: {
     fontSize: 12,
-    color: '#666',
+    color: theme.colors.text.secondary,
     marginTop: 2,
   },
   readOnlyBanner: {

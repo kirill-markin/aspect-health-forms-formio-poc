@@ -33,9 +33,36 @@ export const FormRenderer: React.FC<FormRendererProps> = ({
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${form.title}</title>
+    
+    <!-- Bootstrap 4 CSS (official Form.io default) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    
+    <!-- Form.io CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/formiojs@4.21.3/dist/formio.full.min.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .formio-form {
+            background: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        /* Wizard specific improvements */
+        .formio-wizard-nav {
+            margin-bottom: 30px;
+        }
+        .formio-wizard-nav .btn {
+            margin: 0 5px;
+        }
+    </style>
 </head>
 <body>
-    <div id="formio-form" style="padding: 20px;"></div>
+    <div id="formio-form" class="formio-form"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/formiojs@4.21.3/dist/formio.full.min.js"></script>
     <script>
